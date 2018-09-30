@@ -11,6 +11,8 @@
     <AssemblyName>KtaLoggingConfig</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,6 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CoreWorkerConfig.cs" />
+    <Compile Include="KtaHelper.cs" />
+    <Compile Include="ThinClientTraceLogDefinition.cs" />
+    <Compile Include="KtaTraceLogDefinition.cs" />
     <Compile Include="ThinClientTraceListenerLog.cs" />
     <Compile Include="KtaTraceListenerLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

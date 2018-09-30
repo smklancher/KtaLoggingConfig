@@ -7,35 +7,49 @@ using SystemDiagnosticsConfig;
 
 namespace KtaLoggingConfig
 {
-    public class KtaTraceListenerLog : LogConfig
+    public class KtaTraceListenerLog : LogListener
     {
-        public KtaTraceListenerLog(SystemDiagnosticsConfigCT SysDiag) : base(SysDiag)
+        public KtaTraceListenerLog(SystemDiagnosticsConfigCT SysDiag, ListenerElementCT listener) : base(SysDiag,listener)
         {
 
         }
 
-        private ListenerElementCT SetKtaTraceListener(string filename)
-        {
-            return ConfigHelper.SetTraceListener(SysDiag, "KTALog", "System.Diagnostics.TextWriterTraceListener", filename);
-        }
+        //public static KtaTraceListenerLog FindExisting(LogListenerCollection listeners)
+        //{
+        //    foreach (var l in listeners)
+        //    {
+        //        if (l.ListenerName.ToLower() == "ktalog")
+        //        {
 
-        public override string LogFileName
-        {
-            get
-            {
-                var filename = this?.SysDiag?.Trace?.Listeners?.Add[0]?.InitializeData;
-                return (string.IsNullOrEmpty(filename)) ? string.Empty : filename;
-            }
+        //            return new KtaTraceListenerLog(SysDiag, l.listener);
+        //        }
+        //    }
 
-            set
-            {
-                SetKtaTraceListener(value);
-            }
-        }
+        //    return null;
+        //}
+
+        //        private ListenerElementCT SetKtaTraceListener(string filename)
+        //        {
+        //            return ConfigHelper.SetTraceListener(SysDiag, "KTALog", "System.Diagnostics.TextWriterTraceListener", filename);
+        //        }
+
+        //        //public override string LogFileName
+        //        //{
+        //        //    get
+        //        //    {
+        //        //        var filename = this?.SysDiag?.Trace?.Listeners?.Add?.Where(x => x.Name == "KTALog").FirstOrDefault()?.InitializeData;
+        //        //        return (string.IsNullOrEmpty(filename)) ? string.Empty : filename;
+        //        //    }
+
+        //        //    set
+        //        //    {
+        //        //        SetKtaTraceListener(value);
+        //        //    }
+        //        //}
 
 
 
-        public override bool Enabled
+        public bool Enabled
         {
             get
             {
@@ -50,7 +64,7 @@ namespace KtaLoggingConfig
                 // If enabling, ensure that basic settings exist by setting the log file name (to itself in case already exists)
                 if (value)
                 {
-                    LogFileName = LogFileName;
+                    //LogFileName = LogFileName;
                 }
             }
         }

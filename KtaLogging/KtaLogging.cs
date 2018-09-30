@@ -10,12 +10,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
 using SystemDiagnosticsConfig;
+using System.Diagnostics;
 
 namespace KtaLogging
 {
     public partial class KtaLogging : Form
     {
-        public CoreWorkerConfig config;
+        private BindingSource bs = new BindingSource();
+        private ConfigCollection configs;
+        private DisplayHelper dh = new DisplayHelper();
 
         public KtaLogging()
         {
@@ -24,34 +27,70 @@ namespace KtaLogging
 
         private void KtaLogging_Load(object sender, EventArgs e)
         {
+            dh.DataGridView = dataGridView1;
+            dh.PropertyGrid = LogProperties;
+            dh.TextBox = DetailTextBox;
 
+            configs = KtaHelper.KtaConfigs();
+            dh.DisplayConfigs(configs);
+            
 
-            //const string File = @"C:\WorkingCopy\KtaLoggingConfig\Misc\Agility.Server.Core.WorkerService.exe.config";
-            //const string File2 = @"C:\WorkingCopy\KtaLoggingConfig\Misc\Kofax.CEBPM.Reporting.AzureETL.exe.config";
-            //var x = new CoreWorker(File2);
+            //var logs = configs.SelectMany(x => x.Listeners);
+            
 
-            config = CoreWorkerConfig.LoadFromDefaultLocation();
-            checkBox1.Checked = config.TraceListenerLog.Enabled;
-            textBox1.Text = config.TraceListenerLog.LogFileName;
+            //dataGridView1.AutoGenerateColumns = true;
 
-            //var logs = new List<LogConfig>();
-            //logs.Add(CoreWorkerConfig.LoadFromDefaultLocation().TraceListenerLog);
-            //logs.Add(WebConfig.LoadFromDefaultLocation().TraceListenerLog);
-            //logs.Add(WebConfig.LoadFromDefaultLocation().ThinClientTraceListenerLog);
-            //LogProperties.SelectedObject = logs.ToArray();
-
-
-            var configs = new ConfigCollection();
-            configs.Add(config);
-            configs.Add(WebConfig.LoadFromDefaultLocation());
-            LogProperties.SelectedObject = configs;
+            //var web = configs.OfType<WebConfig>().FirstOrDefault();
+            //var y = web.Definitions;
+            //foreach(var z in y)
+            //{
+            //    Debug.Write(z.ToString());
+            //}
         }
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
-            config.TraceListenerLog.Enabled = checkBox1.Checked;
-            config.TraceListenerLog.LogFileName = textBox1.Text;
-            config.SaveXml();
+            //config.TraceListenerLog.Enabled = checkBox1.Checked;
+            //config.TraceListenerLog.LogFileName = textBox1.Text;
+            //config.SaveXml();
+        }
+
+        private void logDefinitionBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
+        
+
+        private void dataGridView1_Click(object sender, EventArgs e)
+        {
+            dh.SelectedLogDefChanged();
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //dh.SelectedLogDefChanged(); 
+        }
+
+        private void dataGridView1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            //dh.SelectedLogDefChanged(); 
+        }
+
+        private void dataGridView1_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            dh.SelectedLogDefChanged(); 
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            //e.Cancel = true;
+            //e.ThrowException = false;
         }
     }
 }

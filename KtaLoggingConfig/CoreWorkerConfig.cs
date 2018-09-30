@@ -29,10 +29,10 @@ namespace KtaLoggingConfig
 
         public CoreWorkerConfig(string file) : base(file)
         {
-            TraceListenerLog = new KtaTraceListenerLog(SysDiag);
+           // TraceListenerLog = new KtaTraceListenerLog(SysDiag);
         }
 
-        public KtaTraceListenerLog TraceListenerLog {get;set;}
+        //public KtaTraceListenerLog TraceListenerLog {get;set;}
 
 
         public static CoreWorkerConfig LoadFromDefaultLocation()

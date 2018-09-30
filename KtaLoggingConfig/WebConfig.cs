@@ -11,8 +11,13 @@ namespace KtaLoggingConfig
     {
         public WebConfig(string file) : base(file)
         {
-            TraceListenerLog = new KtaTraceListenerLog(SysDiag);
-            ThinClientTraceListenerLog = new ThinClientTraceListenerLog(SysDiag);
+            //TraceListenerLog = new KtaTraceListenerLog(SysDiag);
+            // ThinClientTraceListenerLog = new ThinClientTraceListenerLog(SysDiag);
+            //TraceListenerLog = KtaTraceListenerLog.FindExisting(this.Listeners);
+
+
+            KtaTrace = new KtaTraceLogDefinition(this);
+            ThinClientTrace = new ThinClientTraceLogDefinition(this);
         }
 
         public static WebConfig LoadFromDefaultLocation()
@@ -23,6 +28,8 @@ namespace KtaLoggingConfig
 
         public KtaTraceListenerLog TraceListenerLog { get; set; }
 
-        public ThinClientTraceListenerLog ThinClientTraceListenerLog { get; set; }
+        public KtaTraceLogDefinition KtaTrace { get; } 
+
+        public ThinClientTraceLogDefinition ThinClientTrace { get;  }
     }
 }
