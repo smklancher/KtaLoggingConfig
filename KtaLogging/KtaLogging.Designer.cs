@@ -28,15 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.SaveButton = new System.Windows.Forms.Button();
             this.LogProperties = new System.Windows.Forms.PropertyGrid();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.MainContainer = new System.Windows.Forms.SplitContainer();
             this.BottomContainer = new System.Windows.Forms.SplitContainer();
             this.DetailTextBox = new System.Windows.Forms.TextBox();
+            this.OpenButton = new System.Windows.Forms.Button();
+            this.BackupButton = new System.Windows.Forms.Button();
+            this.OpenConfigButton = new System.Windows.Forms.Button();
+            this.SaveSelectedButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainContainer)).BeginInit();
             this.MainContainer.Panel1.SuspendLayout();
@@ -48,32 +49,16 @@
             this.BottomContainer.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // SaveButton
             // 
-            this.button1.Location = new System.Drawing.Point(566, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(12, 12);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(65, 17);
-            this.checkBox1.TabIndex = 1;
-            this.checkBox1.Text = "Enabled";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(83, 10);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(286, 20);
-            this.textBox1.TabIndex = 2;
+            this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SaveButton.Location = new System.Drawing.Point(713, 6);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(75, 23);
+            this.SaveButton.TabIndex = 0;
+            this.SaveButton.Text = "Save All";
+            this.SaveButton.UseVisualStyleBackColor = true;
+            this.SaveButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // LogProperties
             // 
@@ -82,14 +67,6 @@
             this.LogProperties.Name = "LogProperties";
             this.LogProperties.Size = new System.Drawing.Size(514, 400);
             this.LogProperties.TabIndex = 3;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(375, 10);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 4;
             // 
             // dataGridView1
             // 
@@ -153,21 +130,67 @@
             this.DetailTextBox.Location = new System.Drawing.Point(0, 0);
             this.DetailTextBox.Multiline = true;
             this.DetailTextBox.Name = "DetailTextBox";
+            this.DetailTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.DetailTextBox.Size = new System.Drawing.Size(258, 400);
             this.DetailTextBox.TabIndex = 0;
+            // 
+            // OpenButton
+            // 
+            this.OpenButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.OpenButton.Location = new System.Drawing.Point(632, 6);
+            this.OpenButton.Name = "OpenButton";
+            this.OpenButton.Size = new System.Drawing.Size(75, 23);
+            this.OpenButton.TabIndex = 7;
+            this.OpenButton.Text = "Open Log";
+            this.OpenButton.UseVisualStyleBackColor = true;
+            this.OpenButton.Click += new System.EventHandler(this.OpenButton_Click_1);
+            // 
+            // BackupButton
+            // 
+            this.BackupButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BackupButton.Location = new System.Drawing.Point(446, 6);
+            this.BackupButton.Name = "BackupButton";
+            this.BackupButton.Size = new System.Drawing.Size(97, 23);
+            this.BackupButton.TabIndex = 8;
+            this.BackupButton.Text = "Backup Configs";
+            this.BackupButton.UseVisualStyleBackColor = true;
+            this.BackupButton.Click += new System.EventHandler(this.BackupButton_Click);
+            // 
+            // OpenConfigButton
+            // 
+            this.OpenConfigButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.OpenConfigButton.Location = new System.Drawing.Point(549, 6);
+            this.OpenConfigButton.Name = "OpenConfigButton";
+            this.OpenConfigButton.Size = new System.Drawing.Size(75, 23);
+            this.OpenConfigButton.TabIndex = 9;
+            this.OpenConfigButton.Text = "Open Config";
+            this.OpenConfigButton.UseVisualStyleBackColor = true;
+            this.OpenConfigButton.Click += new System.EventHandler(this.OpenConfigButton_Click);
+            // 
+            // SaveSelectedButton
+            // 
+            this.SaveSelectedButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SaveSelectedButton.Location = new System.Drawing.Point(348, 6);
+            this.SaveSelectedButton.Name = "SaveSelectedButton";
+            this.SaveSelectedButton.Size = new System.Drawing.Size(92, 23);
+            this.SaveSelectedButton.TabIndex = 10;
+            this.SaveSelectedButton.Text = "Save Selected";
+            this.SaveSelectedButton.UseVisualStyleBackColor = true;
+            this.SaveSelectedButton.Click += new System.EventHandler(this.SaveSelectedButton_Click);
             // 
             // KtaLogging
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 597);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.SaveSelectedButton);
+            this.Controls.Add(this.OpenConfigButton);
+            this.Controls.Add(this.BackupButton);
+            this.Controls.Add(this.OpenButton);
+            this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.MainContainer);
             this.Name = "KtaLogging";
-            this.Text = "Form1";
+            this.Text = "KTA Logging";
             this.Load += new System.EventHandler(this.KtaLogging_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.MainContainer.Panel1.ResumeLayout(false);
@@ -180,22 +203,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.BottomContainer)).EndInit();
             this.BottomContainer.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.PropertyGrid LogProperties;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.SplitContainer MainContainer;
         private System.Windows.Forms.SplitContainer BottomContainer;
         private System.Windows.Forms.TextBox DetailTextBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button OpenButton;
+        private System.Windows.Forms.Button BackupButton;
+        private System.Windows.Forms.Button OpenConfigButton;
+        private System.Windows.Forms.Button SaveSelectedButton;
     }
 }
 

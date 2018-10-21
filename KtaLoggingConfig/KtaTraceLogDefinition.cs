@@ -19,8 +19,9 @@ namespace KtaLoggingConfig
 
         protected override string DefaultListenerType => "System.Diagnostics.TextWriterTraceListener";
 
-        protected override string DefaultLocation => @"c:\temp\KTALog.txt";
+        public override string DefaultLocation { get; set; } = @"c:\temp\KTALog.txt";
 
-        public override string Name => "Web.config KTA Trace";
+        public override string Name => "KTA Trace";
+        
     }
 }

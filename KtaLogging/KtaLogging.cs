@@ -34,7 +34,7 @@ namespace KtaLogging
             configs = KtaHelper.KtaConfigs();
             dh.DisplayConfigs(configs);
             
-
+            
             //var logs = configs.SelectMany(x => x.Listeners);
             
 
@@ -51,9 +51,10 @@ namespace KtaLogging
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //config.TraceListenerLog.Enabled = checkBox1.Checked;
-            //config.TraceListenerLog.LogFileName = textBox1.Text;
-            //config.SaveXml();
+            foreach(var c in configs)
+            {
+                c.SaveXml();
+            }
         }
 
         private void logDefinitionBindingSource_CurrentChanged(object sender, EventArgs e)
@@ -91,6 +92,29 @@ namespace KtaLogging
         {
             //e.Cancel = true;
             //e.ThrowException = false;
+        }
+        
+        private void OpenButton_Click_1(object sender, EventArgs e)
+        {
+            dh.OpenLogOrFolder();
+        }
+
+        private void BackupButton_Click(object sender, EventArgs e)
+        {
+            string msg=dh.BackupConfigs(configs);
+            MessageBox.Show(msg);
+        }
+
+        private void OpenConfigButton_Click(object sender, EventArgs e)
+        {
+            dh.OpenConfig();
+        }
+
+        private void SaveSelectedButton_Click(object sender, EventArgs e)
+        {
+            var log = dh.SelectedLogDef;
+            if (log == null) return;
+            log.Config.SaveXml();
         }
     }
 }

@@ -7,7 +7,7 @@ using SystemDiagnosticsConfig;
 
 namespace KtaLoggingConfig
 {
-    public class WebConfig : ConfigFile
+    public class WebConfig : KtaConfig
     {
         public WebConfig(string file) : base(file)
         {
@@ -18,6 +18,7 @@ namespace KtaLoggingConfig
 
             KtaTrace = new KtaTraceLogDefinition(this);
             ThinClientTrace = new ThinClientTraceLogDefinition(this);
+            ActivtyTrace= new ActivityTraceLogDefinition(this);
         }
 
         public static WebConfig LoadFromDefaultLocation()
@@ -26,10 +27,9 @@ namespace KtaLoggingConfig
             return new WebConfig(filename);
         }
 
-        public KtaTraceListenerLog TraceListenerLog { get; set; }
+        public KtaTraceLogDefinition KtaTrace { get; }
 
-        public KtaTraceLogDefinition KtaTrace { get; } 
-
-        public ThinClientTraceLogDefinition ThinClientTrace { get;  }
+        public ThinClientTraceLogDefinition ThinClientTrace { get; }
+        public ActivityTraceLogDefinition ActivtyTrace { get; }
     }
 }

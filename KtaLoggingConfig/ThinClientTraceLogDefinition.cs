@@ -19,21 +19,14 @@ namespace KtaLoggingConfig
 
         protected override string DefaultListenerType => "System.Diagnostics.TextWriterTraceListener";
 
-        protected override string DefaultLocation => @"c:\temp\ThinClientServerLog.txt";
-        public  override string Name => "Web.config Thin Client Trace";
+        public override string DefaultLocation { get; set; } = @"c:\temp\ThinClientServerLog.txt";
+        public  override string Name => "Thin Client Trace";
 
         public override IEnumerable<string> AvailableLevels
         {
             get
             {
-                //Off, Critical, Error, Warning, Information, Verbose or All)
-                yield return "Off";
-                yield return "Critical";
-                yield return "Error";
-                yield return "Warning";
-                yield return "Information";
-                yield return "Verbose";
-                yield return "All";
+                return StandardLevels;
             }
         }
 
