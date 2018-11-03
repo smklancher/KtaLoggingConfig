@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CSPSLogDefinition.cs" />
+    <Compile Include="ExtractionSchedulerRegistry.cs" />
     <Compile Include="KtaPath.cs" />
     <Compile Include="TransformationLogDefinition.cs" />
     <Compile Include="ReportingLogDefinition.cs" />
@@ -55,6 +56,7 @@
     <Compile Include="KtaTraceLogDefinition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebConfig.cs" />
+    <Compile Include="XDocSnapShot.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\SystemDiagnosticsConfig\SystemDiagnosticsConfig\SystemDiagnosticsConfig.csproj">

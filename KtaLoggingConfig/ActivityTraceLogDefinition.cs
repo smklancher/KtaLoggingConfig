@@ -27,7 +27,7 @@ namespace KtaLoggingConfig
 
         protected override bool IsTrace => false;
 
-        public override string Level { get => "N/A"; set => Debug.WriteLine("Level ignored"); }
+        public override string Level { get => string.Empty; set { } }
 
         protected override ListenerElementCT FindExistingListener()
         {

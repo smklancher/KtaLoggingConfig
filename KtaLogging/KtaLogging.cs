@@ -33,10 +33,12 @@ namespace KtaLogging
 
             configs = KtaHelper.KtaConfigs();
             dh.DisplayConfigs(configs);
-            
-            
+            dh.AddLog(new XDocSnapShot());
+            dh.AddLog(new ExtractionSchedulerRegistry());
+
+
             //var logs = configs.SelectMany(x => x.Listeners);
-            
+
 
             //dataGridView1.AutoGenerateColumns = true;
 
@@ -96,7 +98,7 @@ namespace KtaLogging
         
         private void OpenButton_Click_1(object sender, EventArgs e)
         {
-            dh.OpenLogOrFolder();
+            dh.OpenLog();
         }
 
         private void BackupButton_Click(object sender, EventArgs e)
@@ -114,7 +116,9 @@ namespace KtaLogging
         {
             var log = dh.SelectedLogDef;
             if (log == null) return;
-            log.Config.SaveXml();
+            log.SaveConfig();
+
+
         }
     }
 }
