@@ -32,6 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="INIFileParser, Version=2.5.2.0, Culture=neutral, PublicKeyToken=79af7b307b65cf3c" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -46,6 +47,8 @@
   <ItemGroup>
     <Compile Include="CSPSLogDefinition.cs" />
     <Compile Include="ExtractionSchedulerRegistry.cs" />
+    <Compile Include="WcsConfig.cs" />
+    <Compile Include="KdbIni.cs" />
     <Compile Include="KtaPath.cs" />
     <Compile Include="TransformationLogDefinition.cs" />
     <Compile Include="ReportingLogDefinition.cs" />

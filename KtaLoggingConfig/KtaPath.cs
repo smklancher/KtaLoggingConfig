@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using SystemDiagnosticsConfig;
 
 namespace KtaLoggingConfig
 {
@@ -95,26 +96,28 @@ namespace KtaLoggingConfig
 
         private static DirectoryInfo ServiceFolder(string ServiceName)
         {
-            string RegString = ReadRegString(RegistryHive.LocalMachine, ServicesKey + ServiceName, "ImagePath");
-            // Take the quoted path ignoring any command lines added after
-            string FileString = RegString;
-            if (RegString.StartsWith("\""))
-            {
-                Match m = Regex.Match(RegString, "\"(.*?)\"");
-                FileString = m.Groups[1].Value;
-            }
+            //TODO: change callers
+            string FileString = ServiceFolderString(ServiceName);
+
             // Fileinfo can handle paths that don't exist, but not blank, so this is a silly workaround for a valid non existant path
             // Could allow returning nulls (and adapt callers) instead of this
             if (FileString == string.Empty)
             {
                 FileString = Path.Combine("C:\\", Guid.NewGuid().ToString(), Guid.NewGuid().ToString());
             }
-            return new FileInfo(FileString).Directory;
+            return new DirectoryInfo(FileString);
         }
 
         private static string ServiceFolderString(string ServiceName)
         {
-            string FileString = ReadRegString(RegistryHive.LocalMachine, ServicesKey + ServiceName, "ImagePath");
+            RegistryLocation RegLocation = new RegistryLocation()
+            {
+                BaseKey = RegistryHive.LocalMachine,
+                SubKey = ServicesKey + ServiceName,
+                KeyName = "ImagePath"
+            };
+
+            string FileString = RegLocation.Read();
             // Take the quoted path ignoring any command lines added after
             if (FileString.StartsWith("\""))
             {
@@ -206,39 +209,6 @@ namespace KtaLoggingConfig
                 return true;
             }
             return false;
-        }
-
-        private static string ReadRegString(RegistryHive BaseKey, string subKey, string KeyName, RegistryView View = RegistryView.Default)
-        {
-            try
-            {
-                RegistryKey rk = RegistryKey.OpenBaseKey(BaseKey, View);
-                RegistryKey sk1 = rk.OpenSubKey(subKey);
-
-                // Return the value as string, or empty string if key or value does not exist
-                return sk1?.GetValue(KeyName)?.ToString() ?? String.Empty;
-            }
-            catch (Exception e)
-            {
-                Debug.Print((e.Message + (": " + KeyName.ToUpper())));
-                return String.Empty;
-            }
-
-        }
-
-        private static void WriteRegString(RegistryHive BaseKey, string subKey, string KeyName, string Value, RegistryView View = RegistryView.Default)
-        {
-            try
-            {
-                RegistryKey rk = RegistryKey.OpenBaseKey(BaseKey, View);
-                RegistryKey sk1 = rk.CreateSubKey(subKey);
-                sk1.SetValue(KeyName, Value, RegistryValueKind.String);
-            }
-            catch (Exception e)
-            {
-                Debug.Print(e.Message + ": " + KeyName.ToUpper());
-            }
-
         }
 
     }

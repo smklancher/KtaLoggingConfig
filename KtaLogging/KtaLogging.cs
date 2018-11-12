@@ -35,6 +35,9 @@ namespace KtaLogging
             dh.DisplayConfigs(configs);
             dh.AddLog(new XDocSnapShot());
             dh.AddLog(new ExtractionSchedulerRegistry());
+            dh.AddLog(KdbIni.FromWinIni());
+            dh.AddLog(WcsConfig.FromHost());
+            dh.AddLog(WcsConfig.FromScanWorker());
 
 
             //var logs = configs.SelectMany(x => x.Listeners);
@@ -49,7 +52,7 @@ namespace KtaLogging
             //    Debug.Write(z.ToString());
             //}
         }
-        
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -119,6 +122,11 @@ namespace KtaLogging
             log.SaveConfig();
 
 
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            
         }
     }
 }
