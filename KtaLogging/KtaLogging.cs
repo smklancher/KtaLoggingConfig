@@ -39,6 +39,12 @@ namespace KtaLogging
             dh.AddLog(WcsConfig.FromHost());
             dh.AddLog(WcsConfig.FromScanWorker());
 
+            var NonDefListeners = configs.SelectMany(x => x.NonDefinitionListeners);
+            foreach(var l in NonDefListeners)
+            {
+                dh.AddLog(l);
+            }
+
 
             //var logs = configs.SelectMany(x => x.Listeners);
 
