@@ -34,7 +34,7 @@ namespace KtaLoggingConfig
         {
             get
             {
-                return Listener.Filter.InitializeData;
+                return Listener.Filter?.InitializeData ?? string.Empty;
             }
             set
             {
