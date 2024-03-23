@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29613.14
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KtaLoggingConfig", "KtaLoggingConfig\KtaLoggingConfig.csproj", "{57BF394C-2594-458D-93E4-BD44364FA9D8}"
 EndProject
@@ -12,7 +12,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KtaLogging", "KtaLogging\Kt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemDiagnosticsConfig", "..\SystemDiagnosticsConfig\SystemDiagnosticsConfig\SystemDiagnosticsConfig.csproj", "{CD3ACE54-5E34-4FD1-A57A-0025FBEFB09D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggingConfig", "LoggingConfig\LoggingConfig.csproj", "{A103FE8F-E514-4587-BED5-0A407530A7AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggingConfig", "LoggingConfig\LoggingConfig.csproj", "{A103FE8F-E514-4587-BED5-0A407530A7AD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{B577BCCB-C8B7-4B42-8AB4-2E90832FE4FC}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,0 +1,33 @@
+<Project>
+
+  <PropertyGroup>
+    <LangVersion>11.0</LangVersion>
+
+    <!-- required for auto incrementing assembly version, which is needed for KTA -->
+    <Deterministic>false</Deterministic>
+    <AssemblyVersion>1.0.*</AssemblyVersion>
+	  
+	  <!-- Intend to turn this on to enable new analyzers and chip away at warnings
+	<EnableNETAnalyzers>true</EnableNETAnalyzers>
+	 -->
+
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>$(MSBuildThisFileDirectory)\SolutionItems\Singularity.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>false</DelaySign>
+
+    <KtaCategory>Troubleshooting</KtaCategory>
+	<PackageSaveFolder>\\sklancher-test\share\KTAPackages\Utilities\</PackageSaveFolder>
+  </PropertyGroup>
+
+
+  <!-- 
+  C# 8.0 and higher on .NET Framework: 
+  -->
+	<ItemGroup>
+		<PackageReference Include="PolySharp" Version="1.14.1">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+</Project>
