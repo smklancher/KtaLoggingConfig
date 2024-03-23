@@ -1,81 +1,28 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{57BF394C-2594-458D-93E4-BD44364FA9D8}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KtaLoggingConfig</RootNamespace>
-    <AssemblyName>KtaLoggingConfig</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
-    <TargetFrameworkProfile />
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="INIFileParser, Version=2.5.2.0, Culture=neutral, PublicKeyToken=79af7b307b65cf3c, processorArchitecture=MSIL">
-      <HintPath>..\packages\ini-parser.2.5.2\lib\net20\INIFileParser.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
     <Reference Include="System.Configuration" />
-    <Reference Include="System.Core" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CSPSLogDefinition.cs" />
-    <Compile Include="ExtractionSchedulerRegistry.cs" />
-    <Compile Include="WcsConfig.cs" />
-    <Compile Include="KdbIni.cs" />
-    <Compile Include="KtaPath.cs" />
-    <Compile Include="TransformationLogDefinition.cs" />
-    <Compile Include="ReportingLogDefinition.cs" />
-    <Compile Include="KtaConfig.cs" />
-    <Compile Include="KtaHelper.cs" />
-    <Compile Include="ActivityTraceLogDefinition.cs" />
-    <Compile Include="ThinClientTraceLogDefinition.cs" />
-    <Compile Include="KtaTraceLogDefinition.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebConfig.cs" />
-    <Compile Include="XDocSnapShot.cs" />
+    <ProjectReference Include="..\..\SystemDiagnosticsConfig\SystemDiagnosticsConfig\SystemDiagnosticsConfig.csproj" />
+    <ProjectReference Include="..\LoggingConfig\LoggingConfig.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\SystemDiagnosticsConfig\SystemDiagnosticsConfig\SystemDiagnosticsConfig.csproj">
-      <Project>{CD3ACE54-5E34-4FD1-A57A-0025FBEFB09D}</Project>
-      <Name>SystemDiagnosticsConfig</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LoggingConfig\LoggingConfig.csproj">
-      <Project>{a103fe8f-e514-4587-bed5-0a407530a7ad}</Project>
-      <Name>LoggingConfig</Name>
-    </ProjectReference>
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="PolySharp" Version="1.14.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <PackageReference Include="ini-parser" Version="2.5.2" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
