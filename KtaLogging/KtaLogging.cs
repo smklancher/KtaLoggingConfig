@@ -36,8 +36,26 @@ namespace KtaLogging
             dh.AddLog(new XDocSnapShot());
             dh.AddLog(new ExtractionSchedulerRegistry());
             dh.AddLog(KdbIni.FromWinIni());
-            dh.AddLog(WcsConfig.FromHost());
-            dh.AddLog(WcsConfig.FromScanWorker());
+
+            try
+            {
+                dh.AddLog(WcsConfig.FromHost());
+            }
+            catch (Exception ex)
+            {
+                Trace.WriteLine($"Could not load WCS host log info {ex.Message}");
+            }
+
+            try
+            {
+                dh.AddLog(WcsConfig.FromScanWorker());
+            }
+            catch (Exception ex)
+            {
+                Trace.WriteLine($"Could not load WCS worker log info {ex.Message}");
+            }
+
+            
 
             var NonDefListeners = configs.SelectMany(x => x.NonDefinitionListeners);
             foreach(var l in NonDefListeners)
